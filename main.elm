@@ -1,8 +1,8 @@
 module Main exposing (..)
 
-import Html.Attributes exposing (id, for, type_, value, class)
+import Html.Attributes exposing (id, type_, value, class)
 import Html.Events exposing (..)
-import Html exposing (..)
+import Html exposing (h1, text, textarea, button, input, label)
 import Http 
 
 
@@ -34,11 +34,17 @@ model =
   , password = ""
   , login = ""
   , logout =  ""
+  , message = ""
+  , reply = ""
+  , filter = ""
+  , send = ""
   }
 
 init : ( Model, Cmd Msg)
 init = 
   ( model, Cmd.none)
+
+
 
 -- Update
  
@@ -47,30 +53,85 @@ type Msg
     | Password  String
     | Login  
     | Logout 
-    | Message
-    | Reply
-    | Filter
-    | Send 
+    | Message String
+    | Reply String
+    | Filter String
+    | Send String
+
 
 type alias User =
-   { user1 : User1
-   , user2 : user2
-   , user3 : user3 
+   { usrename : String 
+   , password : String
    }
+
+users : [ user1, user2, user3]
+
+
+user1 : User
+user1 = 
+  { username = "user1"
+  , password = "1234"
+  }
+
+user2 : User
+user2 =
+  { username = "user2"
+  , password = "5678"
+  }
+
+user3 : Username
+user3 =
+  { username = "user3"
+  , password = "2468"
+  }
+
 
 user : Model -> Html Msg
 user model =
-        { user1 = "1234"
-        , user2 = "5678"
-        }
+      
 
 
-
-update msg model =
+update : Msg -> Model -> (Model, Cmd msg)
+update msg model  =
   case msg of
-    login ->
-      ( model, Cmd.none)
+    Username ->
+      (model, Cmd.none)
+
+    Password ->
+      (model, Cmd.none)
     
+    Login ->
+      (model, Cmd.none)
+
+    Logout ->
+      (model, Cmd.none)
+
+    Message ->
+      (model, Cmd.none)
+
+    Reply -> 
+      (model, Cmd.none)
+
+    Filter ->
+      (model, Cmd.none)
+
+    Send ->
+      (model, Cmd.nones)
+    
+
+
+loginPage : Model -> Html Msg
+loginPage model =
+   let    
+       if (color, message) = 
+          (model.username == "user1" && model.password == "123")
+          ("green", "OK")
+
+         else 
+          ("red", "Invalid login details.")
+       
+      ({ model | message = message}, Cmd.none)
+   in
 
 
 messagePage : Model -> Html Msg
