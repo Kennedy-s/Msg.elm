@@ -1,4 +1,3 @@
-import Html exposing (..)
 import Html exposing (form, text, h1, label, input, button,  textarea, div)
 import Html.Attributes exposing (class, id, for, type_, value, style)
 import Html.Events exposing (..)
@@ -57,41 +56,62 @@ type Msg
     | Send String
 
 type alias User =
-   { user1 : User
-   , useer2 : user
+   { user1 : User1
+   , user2 : user2
+   , user3 : user3 
    }
 
 user : Model -> Html Msg
 user model =
-        { user1 = ""
-        , user2 = ""
+        { user1 = "1234"
+        , user2 = "5678"
         }
 
 
 
-       
 
+
+       
 update : Msg -> Model -> (Model, Cmd msg)
 update msg model  =
   case msg of
    	Username ->
-      let
+      let 
+          if username "match" then
+             "should login"
 
+          else  
       in  
   		(model, Cmd.none)
 
   	Password ->
       let
+         if Password "do not match" then
+         	  "do not login"
+            
+
+         else 
+
+
       in
   		(model, Cmd.none)
 
   	Login ->
       let
+         if
+         
+         else
       in
   	  (model, Cmd.none)
 
   	Logout ->
+      let 
+         if  
+          
 
+         else
+
+        in 
   	  (model, Cmd.none)
 
   	Send ->
@@ -99,8 +119,13 @@ update msg model  =
   	  (model, Cmd.none)
 
   	Reply ->
+      let
 
+
+      in
   	  (model, Cmd.none)
+
+
   	Filter ->
   	  (model, Cmd.none)
 
@@ -110,8 +135,8 @@ update msg model  =
 loginPage : Model -> Html Msg
 loginPage model =
    let    
-       if  (color, message) = 
-       	 (model.username == "user1" && model.password == "123")
+       if (color, message) = 
+       	  (model.username == "user1" && model.password == "123")
        	 	("green", "OK")
 
          else 
